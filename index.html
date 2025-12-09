@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Divyanshu | Full Stack Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e293b;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --accent: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--card-bg);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .resume-btn-nav {
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white !important;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .resume-btn-nav:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap-reverse;
+            min-height: 90vh;
+            /* gap: 2rem; */
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: #64748b;
+        }
+
+        /* --- UPDATED PROFILE IMAGE STYLES (SQUARE) --- */
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 80vh;
+        }
+
+        .hero-img {
+            width: 450px;
+            height: 450px;
+             object-fit: cover; /*Ensures your face fits perfectly in the square */
+            object-position: top; /* Focuses on the top of the image (face)
+            border-radius: 20px; /* Slightly rounded corners for a modern look */
+            border: 8px solid white; /* Nice white frame */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Soft shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover effect: Lifts up slightly */
+        .hero-img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.2);
+        }
+        /* ----------------------------------------------- */
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* General Section Styles */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Skills Section */
+        .skills-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+
+        .skill-tag i {
+            color: var(--primary-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .project-desc {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .project-links {
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            font-size: 2rem;
+        }
+
+        .social-links a {
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-info-item {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .hero { padding-top: 2rem; text-align: center; justify-content: center; }
+            .hero-text { margin: 0 auto; }
+            
+            /* Resize image for mobile */
+            .hero-img { width: 250px; height: 250px; margin-bottom: 2rem; }
+            
+            .btn { width: 100%; margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Shubham.dev</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="./image//Shubham Resume .pdf" download class="resume-btn-nav"><i class="fas fa-download"></i> Resume</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Hi, I'm <span style="color: var(--primary-color)">Shubham Divyanshu</span></h1>
+            <h2>Full Stack Developer</h2>
+            <p>I completed my B.Tech in Information Technology from Siliguri Institute of Technology, West Bengal. I build accessible, pixel-perfect, and performant web applications.</p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+                <a href="./image/Shubham Resume .pdf" download class="btn btn-outline" style="border-color: var(--secondary-color); color: var(--secondary-color);"><i class="fas fa-file-alt"></i> Resume</a>
+            </div>
+        </div>
+        
+        <div class="hero-image-container">
+            <img src="./image/profile.png" alt="Shubham Divyanshu" class="hero-img">
+        </div>
+
+    </section>
+
+    <section id="skills" style="background-color: #f1f5f9;">
+        <h2 class="section-title">Technical Skills</h2>
+        <div style="max-width: 1000px; margin: 0 auto;">
+            
+            <div class="skills-category">
+                <h3 class="category-title">Frontend Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag"><i class="fab fa-html5"></i> HTML5</div>
+                    <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</div>
+                    <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="skill-tag"><i class="fab fa-react"></i> React.js</div>
+                    <div class="skill-tag"><i class="fas fa-code-branch"></i> Redux</div>
+                    <div class="skill-tag"><i class="fas fa-wind"></i> Tailwind CSS</div>
+                    <div class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="category-title">Backend Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag"><i class="fab fa-node"></i> Node.js</div>
+                    <div class="skill-tag"><i class="fas fa-server"></i> Express.js</div>
+                    <div class="skill-tag"><i class="fas fa-network-wired"></i> RESTful APIs</div>
+                    <div class="skill-tag"><i class="fas fa-fire"></i> Firebase</div>
+                    <div class="skill-tag"><i class="fas fa-lock"></i> Authentication</div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="category-title">Database</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag"><i class="fas fa-database"></i> MongoDB</div>
+                    <div class="skill-tag"><i class="fas fa-fire-alt"></i> Firestore</div>
+                    <div class="skill-tag"><i class="fas fa-project-diagram"></i> Data Modeling</div>
+                </div>
+            </div>
+
+            <!-- <div class="skills-category">
+                <h3 class="category-title">Mobile Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag"><i class="fab fa-android"></i> Android (Java)</div>
+                    <div class="skill-tag"><i class="fab fa-react"></i> React Native</div>
+                    <div class="skill-tag"><i class="fas fa-mobile"></i> Mobile UI/UX</div>
+                </div>
+            </div>
+ -->
+            <div class="skills-category">
+                <h3 class="category-title">Tools & Languages</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
+                    <div class="skill-tag"><i class="fab fa-github"></i> GitHub</div>
+                    <div class="skill-tag"><i class="fab fa-java"></i> Java</div>
+                    <div class="skill-tag"><i class="fas fa-code"></i> VS Code</div>
+                    <div class="skill-tag"><i class="fas fa-paper-plane"></i> Postman</div>
+                    <div class="skill-tag"><i class="fas fa-cloud-upload-alt"></i> Vercel/Netlify</div>
+                </div>
+            </div>
+
+             <div class="skills-category">
+                <h3 class="category-title">Soft Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag"><i class="fas fa-users"></i> Team Collaboration</div>
+                    <div class="skill-tag"><i class="fas fa-lightbulb"></i> Problem Solving</div>
+                    <div class="skill-tag"><i class="fas fa-clock"></i> Time Management</div>
+                    <div class="skill-tag"><i class="fas fa-brain"></i> Critical Thinking</div>
+                    <div class="skill-tag"><i class="fas fa-comments"></i> Communication</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <img src="./image/firstImage.png" alt="Snake Game" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Snake Game</h3>
+                    <p class="project-desc">A classic Snake game built with pure logic, featuring high-score tracking and smooth keyboard controls.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/shubhamDivyan/snake-Game" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        <a href="https://snake-game-neon-rho.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Play Game</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="./image/secondImage.png" alt="Recipe Finder App" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Recipe Finder</h3>
+                    <p class="project-desc">A culinary application allowing users to search over 10,000+ recipes. Features API integration for real-time data fetching.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">API Integration</span>
+                        <span class="tech-tag">CSS3</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/shubhamDivyan/Recipe-app-" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        <a href="https://recipe-app-mu-woad.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: #f1f5f9;">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <p style="margin-bottom: 2rem;">I am currently open to new opportunities. Feel free to reach out via email or phone!</p>
+            
+            <div class="contact-info-item">
+                <i class="fas fa-envelope fa-lg" style="color: var(--primary-color);"></i>
+                <span>shubhamdevanshusd@gmail.com</span> 
+            </div>
+            
+            <div class="contact-info-item">
+                <i class="fas fa-phone fa-lg" style="color: var(--primary-color);"></i>
+                <span>+91 7319176681</span> 
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/shubham-divyanshu-a5a3a2258" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/shubhamDivyan" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:email@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Shubham Divyanshu. Built with HTML, CSS & JavaScript.</p>
+    </footer>
+
+</body>
+</html>
